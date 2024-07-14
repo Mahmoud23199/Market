@@ -19,4 +19,7 @@ export class ProductsService {
   getProductByCategory(categoryName:any):Observable<any>{
     return this.httpClient.get(`${this.baseUrl}/products/category/${categoryName}`)
   }
+  getProductById(Id:any):Observable<any>{
+    return this.httpClient.get(`${this.baseUrl}/products/${Id}`)
+  }
 }

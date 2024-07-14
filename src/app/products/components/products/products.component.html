@@ -3,7 +3,7 @@
         <app-select-list [title]="'Categorys'" [data]="categorys" (selectedValue)="categoryChange($event)"></app-select-list>
     </div>
     <div class="row " *ngIf="!loading">
-        <div class="col-md-3 col-sm-12" *ngFor="let item of products">
+        <div class="col-lg-3 col-md-4 col-sm-12" *ngFor="let item of products">
             <app-product-list [data]="item" (item)="addToCart($event)"></app-product-list>
         </div>
     </div>

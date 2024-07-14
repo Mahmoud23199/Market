@@ -1,4 +1,4 @@
-<div class="item">
+<div class="item" (click)="details(data)" >
     <img [src]="data.image" alt="">
     <div class="body">
         <h4>{{data.title}}</h4>
@@ -6,7 +6,12 @@
 
     </div>
     <div class="px-3 mb-2 d-flex justify-content-between align-items-center">
-        <button class="btn btn-success" (click)="add()">Add to Cart</button>
+        <button *ngIf="!isCart" class="btn btn-success" (click)="isCart=true">Add to Cart</button>
+
+        <div class="d-flex w-50" *ngIf="isCart">
+           <input type="number" min="1" class="form-control" value="1" required #productNumber>
+           <button class="btn btn-danger" (click)="add(productNumber.value)">Add</button>
+        </div>
         <span>{{data.price | currency}}</span>
     </div>
 </div>

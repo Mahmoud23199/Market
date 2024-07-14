@@ -70,17 +70,20 @@ categoryChange(event:any){
  }
 
 
- addToCart(item:any){
+ addToCart(event:any){
+
+  console.log(event.quantity)
+
   if("cart" in localStorage){
     this.cartItems=JSON.parse(localStorage.getItem("cart")!);
-    if(this.cartItems.find(i=>i.id==item.id)){
+    if(this.cartItems.find(i=>i.item.id==event.item.id)){
        alert("item already in the cart")
     }else{
-    this.cartItems.push(item);
+    this.cartItems.push(event);
     localStorage.setItem("cart",JSON.stringify(this.cartItems));
     }
   }else{
-     this.cartItems.push(item);
+     this.cartItems.push(event);
     localStorage.setItem("cart",JSON.stringify(this.cartItems));
   }
  }

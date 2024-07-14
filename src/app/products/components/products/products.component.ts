@@ -12,6 +12,7 @@ export class ProductsComponent implements OnInit {
   products:any[]=[];
   categorys:any[]=[];
   loading:boolean=false
+  cartItems:any[]=[];
  
   constructor(private productService:ProductsService,private categoryService:CategoryService){
 
@@ -65,6 +66,22 @@ categoryChange(event:any){
    this.getProductByCategory(event.target.value);
   }else{
     this.getProducts();
+  }
+ }
+
+
+ addToCart(item:any){
+  if("cart" in localStorage){
+    this.cartItems=JSON.parse(localStorage.getItem("cart")!);
+    if(this.cartItems.find(i=>i.id==item.id)){
+       alert("item already in the cart")
+    }else{
+    this.cartItems.push(item);
+    localStorage.setItem("cart",JSON.stringify(this.cartItems));
+    }
+  }else{
+     this.cartItems.push(item);
+    localStorage.setItem("cart",JSON.stringify(this.cartItems));
   }
  }
 

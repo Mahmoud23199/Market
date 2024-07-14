@@ -1,31 +1,14 @@
 <div class="mainBox mt-4">
     <div class="my-2 w-25">
-        <label for="" class="my-1">Categories:</label>
-        <select class="form-control" (change)="categoryChange($event)">
-            <option value="all">All</option>   
-            <option [value]="category" *ngFor="let category of categorys">{{category}}</option>
-        </select>
+        <app-select-list [title]="'Categorys'" [data]="categorys" (selectedValue)="categoryChange($event)"></app-select-list>
     </div>
     <div class="row " *ngIf="!loading">
         <div class="col-md-3 col-sm-12" *ngFor="let item of products">
-            
-            <div class="item">
-                <img [src]="item.image" alt="">
-                <div class="body">
-                    <h4>{{item.title}}</h4>
-                    <p>{{item.description}}</p>
-    
-                </div>
-                <div class="px-3 mb-2 d-flex justify-content-between align-items-center">
-                    <button class="btn btn-success">Add to Cart</button>
-                    <span>{{item.price | currency}}</span>
-                </div>
-            </div>
-    
+            <app-product-list [data]="item" (item)="addToCart($event)"></app-product-list>
         </div>
     </div>
     <!-- spinner -->
-    <div class="text-center w-100" *ngIf="loading">
+    <div class="text-center w-100 mt-5" *ngIf="loading"> 
         <app-spinner></app-spinner>
     </div>
 </div>

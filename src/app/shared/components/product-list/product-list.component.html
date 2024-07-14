@@ -1,10 +1,13 @@
-<div class="item" (click)="details(data)" >
-    <img [src]="data.image" alt="">
-    <div class="body">
-        <h4>{{data.title}}</h4>
-        <p>{{data.description}}</p>
-
+<div class="item" >
+    <div (click)="details(data)">
+        <img [src]="data.image" alt="">
+        <div class="body">
+            <h4>{{data.title}}</h4>
+            <p>{{data.description}}</p>
+    
+        </div>
     </div>
+   
     <div class="px-3 mb-2 d-flex justify-content-between align-items-center">
         <button *ngIf="!isCart" class="btn btn-success" (click)="isCart=true">Add to Cart</button>
 
